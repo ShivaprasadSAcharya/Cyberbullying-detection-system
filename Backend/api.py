@@ -8,8 +8,10 @@ app = Flask(__name__)
 CORS(app, resources={r"/process_text": {"origins": "*"}})
 
 # Path to the pre-trained BERT model file
-model_path = 'Bert.hdfs'
-model = BertForSequenceClassification.from_pretrained(model_path)
+model = BertForSequenceClassification.from_pretrained(
+    "bert-base-uncased",
+    num_labels=6
+)
 
 #Load the tokenizer for the BERT model
 # `do_lower_case=True` ensures that all input text is converted to lowercase
